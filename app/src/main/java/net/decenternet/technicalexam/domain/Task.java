@@ -1,5 +1,7 @@
 package net.decenternet.technicalexam.domain;
 
+import androidx.annotation.NonNull;
+
 public class Task {
     
     private Integer id;
@@ -20,4 +22,5 @@ public class Task {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }

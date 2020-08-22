@@ -21,6 +21,7 @@ public interface TasksContract {
         
         void onAddTaskClicked();
         void onSaveTaskClicked(Task task);
+        void onEditTaskClicked(Task task);
         void onTaskChecked(int taskId);
         void onTaskUnchecked(int taskId);
         void onDeleteTaskClicked(int taskId);

@@ -13,12 +13,17 @@ public class TasksPresenter implements TasksContract.Presenter {
 
     @Override
     public void onAddTaskClicked() {
-
+        TasksActivity.getInstance().popupTaskAddingDialog();
     }
 
     @Override
     public void onSaveTaskClicked(Task task) {
+        taskLocalService.save(task);
+    }
 
+    @Override
+    public void onEditTaskClicked(Task task) {
+        taskLocalService.update(task);
     }
 
     @Override
@@ -33,6 +38,6 @@ public class TasksPresenter implements TasksContract.Presenter {
 
     @Override
     public void onDeleteTaskClicked(int taskId) {
-
+        taskLocalService.delete(taskId);
     }
 }

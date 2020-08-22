@@ -7,6 +7,8 @@ import java.util.List;
 public interface TaskLocalService {
 
     void save(Task task);
+    void delete(int id);
+    void update(Task task);
     List<Task> findAll();
 
 }

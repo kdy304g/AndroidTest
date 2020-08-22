@@ -39,11 +39,46 @@ public class TaskLocalServiceProvider implements TaskLocalService {
     }
 
     @Override
+    public void update(Task task) {
+        ArrayList<Task> tasks = new ArrayList<>(localTasks);
+        for (int i = 0; i < tasks.size(); i++){
+            if(tasks.get(i).getId() == task.getId()){
+                tasks.get(i).setDescription(task.getDescription());
+            }
+        }
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("tasks", new Gson().toJson(tasks));
+        editor.apply();
+        localTasks = tasks;
+    }
+
+    @Override
+    public void delete(int id) {
+        ArrayList<Task> tasks = new ArrayList<>(localTasks);
+        for (int i = 0; i < tasks.size(); i++){
+            if(tasks.get(i).getId() == id){
+                tasks.remove(tasks.get(i));
+            }
+        }
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("tasks", new Gson().toJson(tasks));
+        editor.apply();
+        localTasks = tasks;
+    }
+
+    @Override
     public List<Task> findAll() {
         return new ArrayList<>(localTasks);
     }
 
     private Integer getNextId() {
-        return localTasks.size() + 1;
+        int max = 0;
+        ArrayList<Task> tasks = new ArrayList<>(localTasks);
+        for(int i = 0; i < tasks.size(); i++){
+            if(tasks.get(i).getId() >= max){
+                max = tasks.get(i).getId();
+            }
+        }
+        return max + 1;
     }
 }

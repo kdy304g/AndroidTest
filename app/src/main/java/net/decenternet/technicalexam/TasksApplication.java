@@ -38,9 +38,9 @@ public class TasksApplication extends Application {
 
             @Override
             public void onActivityStopped(@NonNull Activity activity) {
-                if(activity instanceof MainActivity)
-                    if(MainActivity.theCatalyst)
-                        throw new RuntimeException("Oops! What happened?");
+//                if(activity instanceof MainActivity)
+//                    if(MainActivity.theCatalyst)
+//                        throw new RuntimeException("Oops! What happened?");
             }
 
             @Override
